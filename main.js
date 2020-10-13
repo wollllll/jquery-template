@@ -7,13 +7,14 @@ const sample = {
      * 取得したページからfindしてdomを取得することでスコープをページ単位で区切る
      */
     getDom(selector) {
-        return sample.page.find($(`${selector}`));
+        return sample.page.find($(selector));
     },
     /**
      * オブジェクト内で関数等またいでデータを扱う場合はここで定義
      */
     data: {
         message: '',
+        count: 0
     },
     /**
      * 関数置くところ
@@ -32,6 +33,19 @@ const sample = {
         },
         showAlert() {
             alert('clicked');
+        },
+        /**
+         * 用途に合わせて階層深くしたり
+         */
+        counter: {
+            increment() {
+                sample.data.count++;
+
+                sample.getDom('#count').val(sample.data.count);
+            },
+            getNowCount() {
+                alert(sample.data.count);
+            }
         }
     },
     /**
@@ -42,6 +56,8 @@ const sample = {
         sample.modules.showMessage();
         sample.modules.getText();
         sample.getDom('#alert').on('click', sample.modules.showAlert);
+        sample.getDom('#btn-count').on('click', sample.modules.counter.increment);
+        sample.getDom('#now-count').on('click', sample.modules.counter.getNowCount);
     }
 }
 
