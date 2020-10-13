@@ -56,7 +56,7 @@ const sample = {
         sample.modules.showMessage();
         sample.modules.getText();
         sample.getDom('#alert').on('click', sample.modules.showAlert);
-        sample.getDom('#btn-count').on('click', sample.modules.counter.increment);
+        sample.getDom('#increment').on('click', sample.modules.counter.increment);
         sample.getDom('#now-count').on('click', sample.modules.counter.getNowCount);
     }
 }
